@@ -16,6 +16,7 @@ This is a Next.js 15.3.3 e-commerce/fitness platform that integrates:
 npm run dev      # Start development server with Turbopack
 npm run build    # Build production bundle
 npm run start    # Start production server
+npm run lint     # Run ESLint
 ```
 
 ## Architecture
