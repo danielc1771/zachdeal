@@ -21,44 +21,10 @@ export default async function ProgramsPage() {
         <ProgramsHero />
       </section>
 
-      {/* Static Programs */}
-      <section id="static-programs" className="py-12 sm:py-16 lg:py-20 bg-bbd-charcoal/20">
+      {/* Programs Section - Immediately Visible */}
+      <section id="static-programs" className="py-6 sm:py-8 lg:py-12 bg-bbd-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="font-bebas text-2xl xs:text-3xl sm:text-4xl lg:text-5xl text-bbd-ivory mb-4 px-4 leading-tight">
-              DOWNLOADABLE <span className="text-bbd-orange">PROGRAMS</span>
-            </h2>
-            <p className="text-base sm:text-lg lg:text-xl text-bbd-ivory/80 max-w-3xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
-              Ready-to-use PDF workout programs you can download instantly and follow at your own pace.
-            </p>
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm text-bbd-ivory/70 px-4">
-              <div className="flex items-center justify-center sm:justify-start">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-bbd-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="whitespace-nowrap">Instant PDF Download</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-bbd-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="whitespace-nowrap">One-Time Purchase</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-bbd-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="whitespace-nowrap">Proven Programs</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-bbd-gold flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="whitespace-nowrap">No Subscription Required</span>
-              </div>
-            </div>
-          </div>
-
+          {/* Mobile: 1 column, Desktop: 2-3 columns */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {staticPrograms.map((product) => (
               <ProgramCard key={product.id} product={product} />
@@ -76,6 +42,53 @@ export default async function ProgramsPage() {
               </button>
             </div>
           )}
+
+          {/* Benefits Section - Moved Below Products */}
+          <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
+            <div className="mb-8 sm:mb-12">
+              <h2 className="font-bebas text-2xl xs:text-3xl sm:text-4xl lg:text-5xl text-bbd-ivory mb-4 px-4 leading-tight">
+                WHY CHOOSE <span className="text-bbd-orange">OUR PROGRAMS</span>
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-bbd-orange/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-bbd-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-bbd-ivory mb-1 sm:mb-2">Instant PDF Download</h3>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-bbd-gold/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-bbd-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-bbd-ivory mb-1 sm:mb-2">One-Time Purchase</h3>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-bbd-orange/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-bbd-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-bbd-ivory mb-1 sm:mb-2">Proven Results</h3>
+              </div>
+
+              <div className="text-center">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-bbd-gold/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-bbd-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a9.75 9.75 0 109.75 9.75A9.75 9.75 0 0012 2.25z" />
+                  </svg>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-bbd-ivory mb-1 sm:mb-2">Expert Support</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
