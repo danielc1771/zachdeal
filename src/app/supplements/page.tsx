@@ -6,7 +6,7 @@ import SupplementsCTA from '@/components/supplements/SupplementsCTA';
 
 export default async function SupplementsPage() {
   // Fetch supplements from Shopify
-  const supplements: Product[] = await getCollectionProducts('supplements', 10);
+  const supplements: Product[] = await getCollectionProducts('supplements', 50);
 
   return (
     <div className="min-h-screen bg-bbd-black">
@@ -18,6 +18,7 @@ export default async function SupplementsPage() {
       {/* Products Section - Immediately Visible */}
       <section id="supplements" className="py-6 sm:py-8 lg:py-12 bg-bbd-black">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
           {/* Mobile: 2 columns, Desktop: 3-5 columns */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
             {supplements.map((product) => (
