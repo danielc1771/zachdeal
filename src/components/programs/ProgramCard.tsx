@@ -90,9 +90,9 @@ export default function ProgramCard({ product, featured = false, priority = fals
           {product.title}
         </h3>
 
-        {/* Description */}
-        <p className="text-bbd-ivory/70 mb-4 line-clamp-3 text-sm leading-relaxed">
-          {product.description}
+        {/* Description - Shortened */}
+        <p className="text-bbd-ivory/70 mb-3 line-clamp-2 text-sm leading-relaxed">
+          {product.description.substring(0, 80)}...
         </p>
 
         {/* Program Details */}
@@ -111,46 +111,40 @@ export default function ProgramCard({ product, featured = false, priority = fals
           </div>
         </div>
 
-        {/* Price and CTA */}
-        <div className="flex items-center justify-between">
-          <div className="text-left">
-            <span className="text-2xl font-bold text-bbd-orange">
-              {formatPrice(price.amount, price.currencyCode)}
-            </span>
-            {featured && (
-              <div className="text-xs text-bbd-gold">
-                ⭐ Most Popular
-              </div>
-            )}
-          </div>
-          
-          <Link
-            href={`/programs/${product.handle}`}
-            className="inline-flex items-center px-4 py-2 bg-bbd-orange text-bbd-black font-bold text-sm rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105"
-          >
-            GET PROGRAM
-            <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+        {/* Price - Positioned directly under product info */}
+        <div className="mb-3">
+          <span className="text-xl font-bold text-bbd-orange">
+            {formatPrice(price.amount, price.currencyCode)}
+          </span>
+          {featured && (
+            <div className="text-xs text-bbd-gold mt-1">
+              ⭐ Most Popular
+            </div>
+          )}
         </div>
 
-        {/* Trust Indicators */}
-        <div className="mt-4 pt-4 border-t border-bbd-ivory/10">
-          <div className="flex items-center justify-between text-xs text-bbd-ivory/60">
-            <span className="flex items-center">
-              <svg className="w-3 h-3 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              Instant Access
-            </span>
-            <span className="flex items-center">
-              <svg className="w-3 h-3 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              30-Day Guarantee
-            </span>
-          </div>
+        {/* Buy Now Button - Prominent placement */}
+        <Link
+          href={`/programs/${product.handle}`}
+          className="w-full inline-flex items-center justify-center px-4 py-3 bg-bbd-orange text-bbd-black font-bold text-sm rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 mb-3"
+        >
+          BUY NOW
+        </Link>
+
+        {/* Trust Indicators - Simplified */}
+        <div className="flex items-center justify-center gap-4 text-xs text-bbd-ivory/60">
+          <span className="flex items-center">
+            <svg className="w-3 h-3 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            Instant Access
+          </span>
+          <span className="flex items-center">
+            <svg className="w-3 h-3 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            30-Day Guarantee
+          </span>
         </div>
       </div>
     </div>
