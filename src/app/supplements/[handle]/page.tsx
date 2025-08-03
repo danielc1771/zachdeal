@@ -7,7 +7,6 @@ import ProductBreadcrumb from '@/components/products/ProductBreadcrumb';
 import ProductImage from '@/components/products/ProductImage';
 import ProductPrice from '@/components/products/ProductPrice';
 import ProductQuantitySelector from '@/components/products/ProductQuantitySelector';
-import ProductTrustIndicators from '@/components/products/ProductTrustIndicators';
 import AddToCartButton from '@/components/products/AddToCartButton';
 
 interface SupplementPageProps {
@@ -22,6 +21,7 @@ export default function SupplementPage({ params }: SupplementPageProps) {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   useEffect(() => {
     async function fetchProduct() {
@@ -125,8 +125,8 @@ export default function SupplementPage({ params }: SupplementPageProps) {
             </div>
           </div>
 
-          {/* Product Details */}
-          <div className="space-y-8">
+          {/* Product Details - Optimized for Quick Purchase */}
+          <div className="space-y-6">
             {/* Title and Price */}
             <div>
               <h1 className="font-bebas text-4xl lg:text-5xl text-bbd-ivory mb-4 leading-tight">
@@ -135,130 +135,129 @@ export default function SupplementPage({ params }: SupplementPageProps) {
               <ProductPrice price={price} rating={4.8} />
             </div>
 
-            {/* Description */}
+            {/* Short Description with Read More */}
             <div>
-              <h3 className="text-xl font-bold text-bbd-ivory mb-4">About This Supplement</h3>
               <div className="prose prose-invert max-w-none">
                 <p className="text-bbd-ivory/80 leading-relaxed">
-                  {product.description || "Premium quality supplement designed to support your fitness goals and optimize your performance. Made with the highest quality ingredients."}
-                </p>
-              </div>
-            </div>
-
-            {/* Key Benefits */}
-            <div>
-              <h3 className="text-xl font-bold text-bbd-ivory mb-4">Key Benefits</h3>
-              <div className="space-y-3">
-                {supplementType === 'Protein' && [
-                  "25g of high-quality whey protein per serving",
-                  "Fast-absorbing formula for post-workout recovery",
-                  "Supports muscle growth and repair",
-                  "Low in fat and carbohydrates",
-                  "Great taste with multiple flavor options"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-bbd-ivory/80">{benefit}</span>
-                  </div>
-                ))}
-                {supplementType === 'Pre-Workout' && [
-                  "Explosive energy boost for intense workouts",
-                  "Enhanced focus and mental clarity",
-                  "Improved endurance and performance",
-                  "No crash formula",
-                  "Scientifically-backed ingredients"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-bbd-ivory/80">{benefit}</span>
-                  </div>
-                ))}
-                {(supplementType !== 'Protein' && supplementType !== 'Pre-Workout') && [
-                  "Premium quality ingredients",
-                  "Third-party tested for purity",
-                  "Optimal dosing for maximum effectiveness",
-                  "No artificial fillers or additives",
-                  "Manufactured in GMP-certified facilities"
-                ].map((benefit, index) => (
-                  <div key={index} className="flex items-center space-x-3">
-                    <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-bbd-ivory/80">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Suggested Use */}
-            <div>
-              <h3 className="text-xl font-bold text-bbd-ivory mb-4">Suggested Use</h3>
-              <p className="text-bbd-ivory/80">
-                {supplementType === 'Protein' && "Mix 1 scoop with 8-10 oz of water or milk. Consume within 30 minutes after your workout for optimal recovery."}
-                {supplementType === 'Pre-Workout' && "Mix 1 scoop with 8-10 oz of water and consume 20-30 minutes before your workout. Do not exceed 2 scoops in a 24-hour period."}
-                {(supplementType !== 'Protein' && supplementType !== 'Pre-Workout') && "Follow the directions on the label or as directed by your healthcare professional."}
-              </p>
-            </div>
-
-            {/* Quantity and Add to Cart */}
-            <div className="space-y-6">
-              <ProductQuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
-
-              <AddToCartButton
-                variantId={selectedVariant?.id || ''}
-                quantity={quantity}
-                disabled={!selectedVariant}
-                buttonText="ADD TO CART"
-                showPrice={false}
-                className="mb-3 bg-bbd-black border-2 border-bbd-orange text-bbd-orange hover:bg-bbd-orange hover:text-bbd-black"
-              />
-
-              <button
-                onClick={() => {
-                  if (!selectedVariant) return;
-                  const checkoutUrl = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/cart/${selectedVariant.id.split('/').pop()}:${quantity}`;
-                  window.location.href = checkoutUrl;
-                }}
-                disabled={!selectedVariant}
-                className="w-full bg-gradient-to-r from-bbd-orange to-bbd-gold text-bbd-black font-bold text-lg py-4 rounded-lg hover:shadow-2xl hover:shadow-bbd-orange/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                BUY NOW - {formatPrice(price.amount, price.currencyCode)}
-              </button>
-
-              {/* Trust Indicators */}
-              <ProductTrustIndicators 
-                indicators={[
-                  {
-                    icon: (
-                      <svg className="w-8 h-8 text-bbd-orange mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    ),
-                    text: "Fast Shipping"
-                  },
-                  {
-                    icon: (
-                      <svg className="w-8 h-8 text-bbd-orange mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    ),
-                    text: "Quality Tested"
-                  },
-                  {
-                    icon: (
-                      <svg className="w-8 h-8 text-bbd-orange mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    ),
-                    text: "100% Authentic"
+                  {showFullDescription 
+                    ? (product.description || "Premium quality supplement designed to support your fitness goals and optimize your performance. Made with the highest quality ingredients.")
+                    : `${(product.description || "Premium quality supplement designed to support your fitness goals and optimize your performance.").substring(0, 120)}...`
                   }
-                ]}
-              />
+                </p>
+                <button
+                  onClick={() => setShowFullDescription(!showFullDescription)}
+                  className="text-bbd-orange hover:text-bbd-gold text-sm font-medium mt-2 underline"
+                >
+                  {showFullDescription ? 'Read Less' : 'Read More'}
+                </button>
+              </div>
             </div>
+
+            {/* Quantity Selector */}
+            <ProductQuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
+
+            {/* Primary BUY NOW Button - Prominent Placement */}
+            <button
+              onClick={() => {
+                if (!selectedVariant) return;
+                const checkoutUrl = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/cart/${selectedVariant.id.split('/').pop()}:${quantity}`;
+                window.location.href = checkoutUrl;
+              }}
+              disabled={!selectedVariant}
+              className="w-full bg-gradient-to-r from-bbd-orange to-bbd-gold text-bbd-black font-bold text-xl py-5 rounded-lg hover:shadow-2xl hover:shadow-bbd-orange/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+            >
+              BUY NOW - {formatPrice(price.amount, price.currencyCode)}
+            </button>
+
+            {/* Secondary Add to Cart */}
+            <AddToCartButton
+              variantId={selectedVariant?.id || ''}
+              quantity={quantity}
+              disabled={!selectedVariant}
+              buttonText="ADD TO CART"
+              showPrice={false}
+              className="w-full bg-bbd-black border-2 border-bbd-orange text-bbd-orange hover:bg-bbd-orange hover:text-bbd-black"
+            />
+
+            {/* Trust Indicators - Condensed */}
+            <div className="flex items-center justify-center gap-6 text-xs text-bbd-ivory/60 pt-4">
+              <span className="flex items-center">
+                <svg className="w-4 h-4 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Fast Shipping
+              </span>
+              <span className="flex items-center">
+                <svg className="w-4 h-4 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                30-Day Guarantee
+              </span>
+              <span className="flex items-center">
+                <svg className="w-4 h-4 mr-1 text-bbd-orange" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                100% Authentic
+              </span>
+            </div>
+
+            {/* Expandable Details Section */}
+            {showFullDescription && (
+              <div className="border-t border-bbd-ivory/10 pt-6 space-y-6">
+                {/* Key Benefits */}
+                <div>
+                  <h3 className="text-xl font-bold text-bbd-ivory mb-4">Key Benefits</h3>
+                  <div className="space-y-3">
+                    {supplementType === 'Protein' && [
+                      "25g of high-quality whey protein per serving",
+                      "Fast-absorbing formula for post-workout recovery",
+                      "Supports muscle growth and repair"
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-bbd-ivory/80">{benefit}</span>
+                      </div>
+                    ))}
+                    {supplementType === 'Pre-Workout' && [
+                      "Explosive energy boost for intense workouts",
+                      "Enhanced focus and mental clarity",
+                      "Improved endurance and performance"
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-bbd-ivory/80">{benefit}</span>
+                      </div>
+                    ))}
+                    {(supplementType !== 'Protein' && supplementType !== 'Pre-Workout') && [
+                      "Premium quality ingredients",
+                      "Third-party tested for purity",
+                      "Optimal dosing for maximum effectiveness"
+                    ].map((benefit, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <svg className="w-5 h-5 text-bbd-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        <span className="text-bbd-ivory/80">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Suggested Use */}
+                <div>
+                  <h3 className="text-xl font-bold text-bbd-ivory mb-4">Suggested Use</h3>
+                  <p className="text-bbd-ivory/80">
+                    {supplementType === 'Protein' && "Mix 1 scoop with 8-10 oz of water or milk. Consume within 30 minutes after your workout for optimal recovery."}
+                    {supplementType === 'Pre-Workout' && "Mix 1 scoop with 8-10 oz of water and consume 20-30 minutes before your workout. Do not exceed 2 scoops in a 24-hour period."}
+                    {(supplementType !== 'Protein' && supplementType !== 'Pre-Workout') && "Follow the directions on the label or as directed by your healthcare professional."}
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
