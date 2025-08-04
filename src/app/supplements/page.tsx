@@ -9,7 +9,7 @@ export default async function SupplementsPage() {
   const supplements: Product[] = await getCollectionProducts('supplements', 50);
 
   return (
-    <div className="min-h-screen bg-bbd-black">
+    <div className="min-h-screen bg-bbd-black py-4">
       {/* Compact Hero Section */}
       <section id="hero">
         <SupplementsHero />
@@ -20,7 +20,7 @@ export default async function SupplementsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Mobile: 1 column, Desktop: 3-5 columns */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-4 lg:gap-6">
             {supplements.map((product) => (
               <SupplementCard 
                 key={product.id} 
