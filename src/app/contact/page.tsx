@@ -44,12 +44,12 @@ export default function ContactPage() {
               Ready to transform your fitness journey? Have questions about our programs or supplements? 
               We&apos;re here to help you achieve your goals.
             </p>
-            <div className="flex items-center justify-center space-x-8 text-sm text-bbd-ivory/60">
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-8 space-y-2 sm:space-y-0 text-sm text-bbd-ivory/60">
               <div className="flex items-center">
                 <svg className="w-4 h-4 mr-2 text-bbd-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                info@zachdeal.com
+                zach@zachdeal.com
               </div>
               <div className="flex items-center">
                 <svg className="w-4 h-4 mr-2 text-bbd-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -194,17 +194,17 @@ export default function ContactPage() {
 
           {/* CTA Section */}
           <div className="mt-20 text-center">
-            <div className="bg-gradient-to-r from-bbd-orange/10 via-bbd-gold/10 to-bbd-orange/10 rounded-2xl p-12 border border-bbd-orange/20">
-              <h2 className="font-bebas text-4xl text-bbd-ivory mb-4">
-                READY TO START YOUR <span className="text-bbd-orange">TRANSFORMATION?</span>
+            <div className="bg-gradient-to-r from-bbd-orange/10 via-bbd-gold/10 to-bbd-orange/10 rounded-2xl p-8 sm:p-12 border border-bbd-orange/20">
+              <h2 className="font-bebas text-3xl sm:text-4xl text-bbd-ivory mb-4 break-words">
+                READY TO START YOUR <span className="text-bbd-orange block sm:inline">TRANSFORMATION?</span>
               </h2>
-              <p className="text-lg text-bbd-ivory/80 mb-8 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-bbd-ivory/80 mb-8 max-w-2xl mx-auto px-4 sm:px-0">
                 Don&apos;t wait for the perfect moment. Your fitness journey starts today with Built By Deal&apos;s proven programs and premium supplements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/programs"
-                  className="inline-flex items-center px-8 py-4 bg-bbd-orange text-bbd-black font-bold text-lg rounded-lg hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-bbd-orange text-bbd-black font-bold text-lg rounded-lg hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105"
                 >
                   BROWSE PROGRAMS
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -213,7 +213,7 @@ export default function ContactPage() {
                 </Link>
                 <Link
                   href="/supplements"
-                  className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-bbd-ivory text-bbd-ivory font-bold text-lg rounded-lg hover:bg-bbd-ivory hover:text-bbd-black transition-all duration-200 transform hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-bbd-ivory text-bbd-ivory font-bold text-lg rounded-lg hover:bg-bbd-ivory hover:text-bbd-black transition-all duration-200 transform hover:scale-105"
                 >
                   SHOP SUPPLEMENTS
                   <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,15 +225,15 @@ export default function ContactPage() {
               {/* Trust Indicators */}
               <div className="grid grid-cols-3 gap-8 mt-12 max-w-lg mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-orange mb-1">30-Day</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-orange mb-1">30-Day</div>
                   <div className="text-sm text-bbd-ivory/70">Money Back</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-gold mb-1">Instant</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-gold mb-1">Instant</div>
                   <div className="text-sm text-bbd-ivory/70">Delivery</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-orange mb-1">24/7</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-orange mb-1">24/7</div>
                   <div className="text-sm text-bbd-ivory/70">Support</div>
                 </div>
               </div>
