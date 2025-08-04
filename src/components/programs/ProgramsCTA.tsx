@@ -1,6 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 
 export default function ProgramsCTA() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-bbd-charcoal via-bbd-black to-bbd-charcoal relative overflow-hidden">
       {/* Background Pattern */}
@@ -59,15 +65,15 @@ export default function ProgramsCTA() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
-            <Link
-              href="#static-programs"
+            <button
+              onClick={scrollToTop}
               className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-bbd-orange text-bbd-black font-bold text-base sm:text-lg rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
             >
               SHOP PROGRAMS NOW
               <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5-6m0 0h15M17 13v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6" />
               </svg>
-            </Link>
+            </button>
           </div>
 
           {/* Guarantee */}
