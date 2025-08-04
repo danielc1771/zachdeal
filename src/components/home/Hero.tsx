@@ -12,7 +12,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
+    <section className="relative h-screen flex items-start justify-center overflow-hidden pt-20 sm:pt-20 md:pt-24">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -27,15 +27,15 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20 sm:mt-0">
         {/* Tagline - Generic messaging */}
-        <p className="text-bbd-orange font-semibold text-xs sm:text-lg md:text-xl mb-3 sm:mb-4 tracking-wider uppercase max-w-sm sm:max-w-none mx-auto">
+        <p className="text-bbd-orange font-semibold text-xs sm:text-lg md:text-xl mb-2 sm:mb-4 tracking-wider uppercase max-w-sm sm:max-w-none mx-auto">
           <span className="hidden sm:inline">Personalized Fitness & Nutrition</span>
           <span className="sm:hidden">Elite Training & Supplements</span>
         </p>
 
         {/* Main Heading - Full width to match CTA buttons */}
-        <h1 className="font-display text-7xl xs:text-8xl sm:text-6xl md:text-7xl lg:text-8xl text-bbd-ivory mb-4 sm:mb-6 leading-tight max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
+        <h1 className="font-display text-7xl xs:text-8xl sm:text-6xl md:text-7xl lg:text-8xl text-bbd-ivory mb-3 sm:mb-6 leading-tight max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
           <span className="block sm:hidden">
             {/* Mobile: Full width, larger text */}
             <span className="block text-bbd-orange mb-1">TRANSFORM</span>
@@ -50,7 +50,7 @@ export default function Hero() {
         </h1>
 
         {/* Subheading - Generic messaging */}
-        <p className="text-sm sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-sm sm:max-w-3xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-xl md:text-2xl text-gray-300 mb-4 sm:mb-8 max-w-sm sm:max-w-3xl mx-auto leading-relaxed">
           <span className="block sm:hidden">
             {/* Mobile: Generic, concise */}
             Proven programs & premium supplements
@@ -63,7 +63,7 @@ export default function Hero() {
         </p>
 
         {/* CTA Buttons - Prioritized for mobile */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-12 max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
           <Link
             href="/programs"
             className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-bbd-orange text-bbd-black font-bold text-base sm:text-lg rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105"
