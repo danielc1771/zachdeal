@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function ProgramsCTA() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

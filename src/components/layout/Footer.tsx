@@ -16,9 +16,6 @@ export default function Footer() {
     ],
     company: [
       { href: '/about', label: 'About Zach Deal' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/testimonials', label: 'Success Stories' },
-      { href: '/affiliates', label: 'Affiliate Program' },
     ],
     legal: [
       { href: '/privacy', label: 'Privacy Policy' },
