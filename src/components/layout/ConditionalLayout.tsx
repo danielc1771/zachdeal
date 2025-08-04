@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation'
 import Header from './Header'
 import Footer from './Footer'
 import SocialBar from './SocialBar'
-import TrustBadgeMarquee from '../ui/TrustBadgeMarquee'
 
 interface ConditionalLayoutProps {
   children: React.ReactNode
