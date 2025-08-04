@@ -20,7 +20,7 @@ export default function ProgramsCTA() {
 
           {/* Subheading */}
           <p className="text-base sm:text-lg lg:text-xl text-bbd-ivory/80 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
-            Join thousands of people who have transformed their bodies and lives with Built By Deal programs. 
+            Join thousands of people who have transformed their bodies and lives with Zach Deal programs. 
             Your journey to the best version of yourself starts with a single decision.
           </p>
 

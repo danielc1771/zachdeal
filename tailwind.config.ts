@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         'bbd-black': '#000000',
         'bbd-charcoal': '#1A1B18',
@@ -18,6 +21,7 @@ const config: Config = {
       fontFamily: {
         'display': ['Bebas Neue', 'sans-serif'],
         'body': ['Inter', 'sans-serif'],
+        'bebas': ['Bebas Neue', 'sans-serif'],
       },
     },
   },

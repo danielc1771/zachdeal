@@ -18,7 +18,7 @@ export default function SupplementsCTA() {
               READY TO <span className="text-transparent bg-clip-text bg-gradient-to-r from-bbd-orange to-bbd-gold">TRANSFORM</span> YOUR RESULTS?
             </h2>
             <p className="text-xl text-bbd-ivory/80 mb-8 max-w-3xl mx-auto">
-              Join thousands of athletes who trust Built By Deal supplements to fuel their success. 
+              Join thousands of athletes who trust Victory Supps supplements to fuel their success. 
               Get premium quality, proven results, and unmatched support on your fitness journey.
             </p>
           </div>
