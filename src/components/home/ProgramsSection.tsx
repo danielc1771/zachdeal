@@ -37,7 +37,7 @@ export default async function ProgramsSection() {
                       src={productImage.url}
                       alt={productImage.altText || product.title}
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      className="object-contain hover:scale-105 transition-transform duration-300 bg-whi"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-800 flex items-center justify-center">

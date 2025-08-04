@@ -48,7 +48,7 @@ export default function ProgramCard({ product, featured = false, priority = fals
             src={productImage.url}
             alt={productImage.altText || product.title}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            className="object-contain group-hover:scale-110 transition-transform duration-500"
             priority={priority}
           />
         ) : (
