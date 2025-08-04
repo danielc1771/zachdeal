@@ -12,7 +12,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen flex items-start justify-center overflow-hidden pt-20 sm:pt-20 md:pt-24">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -27,7 +27,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center mt-20 sm:mt-0">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Tagline - Generic messaging */}
         <p className="text-bbd-orange font-semibold text-xs sm:text-lg md:text-xl mb-2 sm:mb-4 tracking-wider uppercase max-w-sm sm:max-w-none mx-auto">
           <span className="hidden sm:inline">Personalized Fitness & Nutrition</span>
