@@ -120,10 +120,6 @@ export default function SupplementsSection() {
                       <h3 className="font-display text-2xl text-bbd-ivory mb-2">
                         {product.title}
                       </h3>
-                      <p className="text-gray-400 mb-4 line-clamp-2">
-                        {product.description}
-                      </p>
-                      
                       {/* Price and CTA */}
                       <div className="flex items-center justify-between">
                         <span className="text-2xl font-bold text-bbd-orange">
