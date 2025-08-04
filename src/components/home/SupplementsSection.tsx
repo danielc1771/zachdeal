@@ -41,9 +41,10 @@ export default function SupplementsSection() {
     if (!isTransitioning) {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => 
-          prevIndex - 3 < 0 ? Math.max(0, products.length - 3) : prevIndex - 3
-        );
+        setCurrentIndex((prevIndex) => {
+          if (prevIndex === 0) return products.length -1;
+          return prevIndex - 3 < 0 ? Math.max(0, products.length - 3) : prevIndex - 3;
+        });
         setIsTransitioning(false);
       }, 50);
     }
