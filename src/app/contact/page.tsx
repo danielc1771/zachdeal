@@ -225,15 +225,15 @@ export default function ContactPage() {
               {/* Trust Indicators */}
               <div className="grid grid-cols-3 gap-8 mt-12 max-w-lg mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-orange mb-1">30-Day</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-orange mb-1">30-Day</div>
                   <div className="text-sm text-bbd-ivory/70">Money Back</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-gold mb-1">Instant</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-gold mb-1">Instant</div>
                   <div className="text-sm text-bbd-ivory/70">Delivery</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-bbd-orange mb-1">24/7</div>
+                  <div className="md:text-2xl text-xl font-bold text-bbd-orange mb-1">24/7</div>
                   <div className="text-sm text-bbd-ivory/70">Support</div>
                 </div>
               </div>
