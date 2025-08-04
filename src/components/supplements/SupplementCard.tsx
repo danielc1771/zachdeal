@@ -45,16 +45,6 @@ export default function SupplementCard({ product, featured = false }: Supplement
         </div>
       )}
 
-      {/* Type and Serving Info */}
-      <div className="absolute top-3 right-3 z-10 flex flex-col items-end space-y-1">
-        <span className="bg-bbd-black/80 text-bbd-orange text-xs font-bold px-2 py-1 rounded-md backdrop-blur-sm">
-          {supplementType}
-        </span>
-        <span className="bg-bbd-black/80 text-bbd-ivory/80 text-xs px-2 py-1 rounded-md backdrop-blur-sm">
-          {servingInfo}
-        </span>
-      </div>
-
       {/* Product Image */}
       <Link href={`/supplements/${product.handle}`} className="block relative h-64 overflow-hidden">
         {productImage ? (
@@ -83,10 +73,7 @@ export default function SupplementCard({ product, featured = false }: Supplement
           {product.title}
         </h3>
 
-        {/* Description - Shortened */}
-        <p className="text-bbd-ivory/70 text-sm mb-3 line-clamp-2">
-          {product.description.replace(/(<([^>]+)>)/gi, "").substring(0, 80)}...
-        </p>
+
 
         {/* Benefits/Features */}
         <div className="mb-4">
@@ -130,33 +117,35 @@ export default function SupplementCard({ product, featured = false }: Supplement
           </div>
         </div>
 
-        {/* Price - Positioned directly under product info */}
-        <div className="mb-3">
-          <span className="text-xl font-bold text-bbd-orange">
-            {formatPrice(price.amount, price.currencyCode)}
-          </span>
-          <span className="text-xs text-bbd-ivory/60 ml-2">
-            per {servingInfo.toLowerCase()}
-          </span>
+        {/* Price and Rating - Positioned together on mobile */}
+        <div className="mb-3 flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start">
+          <div>
+            <span className="text-xl font-bold text-bbd-orange">
+              {formatPrice(price.amount, price.currencyCode)}
+            </span>
+            <span className="text-xs text-bbd-ivory/60 ml-2">
+              per {servingInfo.toLowerCase()}
+            </span>
+          </div>
+          
+          {/* Rating - To the right on mobile, below on desktop */}
+          <div className="flex items-center sm:mt-2">
+            {[...Array(5)].map((_, i) => (
+              <svg key={i} className="w-3 h-3 text-bbd-gold fill-current" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+            <span className="text-xs text-bbd-ivory/60 ml-1">(4.8)</span>
+          </div>
         </div>
 
         {/* Buy Now Button - Prominent placement */}
         <Link
           href={`/supplements/${product.handle}`}
-          className="w-full inline-flex items-center justify-center px-4 py-3 bg-bbd-orange text-bbd-black font-bold text-sm rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 mb-3"
+          className="w-full inline-flex items-center justify-center px-4 py-3 bg-bbd-orange text-bbd-black font-bold text-sm rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105"
         >
           BUY NOW
         </Link>
-
-        {/* Rating - Moved below CTA */}
-        <div className="flex items-center justify-center">
-          {[...Array(5)].map((_, i) => (
-            <svg key={i} className="w-3 h-3 text-bbd-gold fill-current" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          ))}
-          <span className="text-xs text-bbd-ivory/60 ml-1">(4.8)</span>
-        </div>
       </div>
     </div>
   );

@@ -33,8 +33,6 @@ export default function SupplementPage({ params }: SupplementPageProps) {
         setProduct(productData);
         const variant = productData.variants.edges[0]?.node;
         setSelectedVariant(variant);
-        console.log('Selected variant:', variant);
-        console.log('Variant available for sale:', variant?.availableForSale);
       } catch (error) {
         console.error('Error fetching product:', error);
         notFound();

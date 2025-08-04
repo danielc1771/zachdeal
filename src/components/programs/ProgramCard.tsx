@@ -12,15 +12,6 @@ export default function ProgramCard({ product, featured = false, priority = fals
   const productImage = product.featuredImage || product.images.edges[0]?.node;
   const price = product.priceRange.minVariantPrice;
   
-  // Extract difficulty level from title or description
-  const getDifficulty = (title: string, description: string) => {
-    const text = (title + ' ' + description).toLowerCase();
-    if (text.includes('beginner') || text.includes('starter')) return 'Beginner';
-    if (text.includes('advanced') || text.includes('expert')) return 'Advanced';
-    if (text.includes('intermediate')) return 'Intermediate';
-    return 'All Levels';
-  };
-  
   // Extract duration from title or description
   const getDuration = (title: string, description: string) => {
     const text = (title + ' ' + description).toLowerCase();
@@ -32,7 +23,6 @@ export default function ProgramCard({ product, featured = false, priority = fals
     return '12 Weeks';
   };
 
-  const difficulty = getDifficulty(product.title, product.description);
   const duration = getDuration(product.title, product.description);
 
   return (
@@ -50,11 +40,6 @@ export default function ProgramCard({ product, featured = false, priority = fals
           FEATURED
         </div>
       )}
-
-      {/* Difficulty Badge */}
-      <div className="absolute top-4 right-4 z-20 bg-bbd-black/80 text-bbd-ivory px-3 py-1 rounded-full text-xs font-medium">
-        {difficulty.toUpperCase()}
-      </div>
 
       {/* Product Image */}
       <Link href={`/programs/${product.handle}`} className="block relative h-64 overflow-hidden">
@@ -89,11 +74,6 @@ export default function ProgramCard({ product, featured = false, priority = fals
         <h3 className="font-bebas text-2xl text-bbd-ivory mb-2 line-clamp-2 group-hover:text-bbd-orange transition-colors">
           {product.title}
         </h3>
-
-        {/* Description - Shortened */}
-        <p className="text-bbd-ivory/70 mb-3 line-clamp-2 text-sm leading-relaxed">
-          {product.description.substring(0, 80)}...
-        </p>
 
         {/* Program Details */}
         <div className="flex items-center gap-4 mb-4 text-xs text-bbd-ivory/60">
