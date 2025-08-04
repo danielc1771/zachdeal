@@ -106,7 +106,7 @@ export default function Testimonials() {
             href="/programs"
             className="inline-block px-8 py-4 bg-bbd-orange text-bbd-ivory font-bold text-lg rounded-md hover:bg-bbd-orange/90 transition-all duration-200 transform hover:scale-105"
           >
-            START YOUR TRANSFORMATION →
+            GET STARTED →
           </Link>
         </div>
       </div>
