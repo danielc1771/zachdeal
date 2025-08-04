@@ -44,7 +44,7 @@ export default function AboutCTA() {
             </Link>
 
             <Link
-              href="/plans"
+              href="/programs"
               className="inline-flex items-center justify-center px-8 sm:px-10 py-4 sm:py-5 bg-transparent border-2 border-bbd-ivory text-bbd-ivory font-bold text-base sm:text-lg lg:text-xl rounded-md hover:bg-bbd-ivory hover:text-bbd-black transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
             >
               START MY JOURNEY

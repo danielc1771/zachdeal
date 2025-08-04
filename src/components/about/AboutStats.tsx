@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export default function AboutStats() {
   const stats = [
     {
@@ -132,12 +134,34 @@ export default function AboutStats() {
             <h3 className="font-display text-xl xs:text-2xl sm:text-3xl text-bbd-ivory mb-4 sm:mb-6 px-2 leading-tight">
               READY TO START YOUR <span className="text-bbd-orange">TRANSFORMATION</span> JOURNEY?
             </h3>
-            <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed mb-4 sm:mb-6 px-2">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed mb-6 sm:mb-8 px-2">
               Transform your body, elevate your life. Join thousands who have already experienced the life-changing results of science-backed training and nutrition.
             </p>
-            <p className="font-display text-lg sm:text-xl lg:text-2xl text-bbd-gold mb-4 px-2">
+            <p className="font-display text-lg sm:text-xl lg:text-2xl text-bbd-gold mb-6 sm:mb-8 px-2">
               YOUR BEST PHYSIQUE AWAITS
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Link
+                href="/programs"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-bbd-orange text-bbd-black font-bold text-base sm:text-lg rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+              >
+                START TRANSFORMATION
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <Link
+                href="/supplements"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-bbd-gold text-bbd-gold font-bold text-base sm:text-lg rounded-md hover:bg-bbd-gold hover:text-bbd-black transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+              >
+                FUEL YOUR GOALS
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

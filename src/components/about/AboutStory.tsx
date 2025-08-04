@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutStory() {
   return (
@@ -95,9 +96,31 @@ export default function AboutStory() {
           <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto mb-6 px-4">
             I can&apos;t put into words how much satisfaction I get seeing science-backed programs that I&apos;ve formulated, generate such successful and astonishing transformations. From the first video message I received from a satisfied client, in tears, telling me how she has reached her goal weight, to the most recent, a young man telling me he&apos;d gained 10 lbs on one of my programs – <strong className="text-bbd-orange">IT NEVER GETS OLD.</strong>
           </p>
-          <p className="text-sm sm:text-base lg:text-lg text-bbd-gold font-semibold px-4">
+          <p className="text-sm sm:text-base lg:text-lg text-bbd-gold font-semibold mb-8 px-4">
             &ldquo;All of my formulations are backed by years of research, experience, and scientific evidence. If you heed my advice, and follow my instructions, you WILL reach your desired outcome.&rdquo;
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+            <Link
+              href="/programs"
+              className="inline-flex items-center justify-center px-6 py-3 bg-bbd-orange text-bbd-black font-bold text-base rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+            >
+              GET MY PROGRAMS
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link
+              href="/supplements"
+              className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-bbd-ivory text-bbd-ivory font-bold text-base rounded-md hover:bg-bbd-ivory hover:text-bbd-black transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+            >
+              SHOP VICTORY SUPPS
+              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

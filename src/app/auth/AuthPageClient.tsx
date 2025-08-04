@@ -203,7 +203,7 @@ export default function AuthPageClient() {
           <div className="mb-8">
             <Link href="/" className="flex items-center">
               <span className="text-2xl font-bold text-bbd-ivory font-bebas">
-                BUILT BY DEAL
+                ZACH DEAL
               </span>
             </Link>
           </div>
@@ -211,7 +211,7 @@ export default function AuthPageClient() {
           {/* Header */}
           <div className="mb-8">
             <h2 className="text-3xl font-bold text-bbd-ivory font-bebas">
-              {mode === 'signup' ? 'Join Built By Deal' : mode === 'verify' ? 'Verify Your Email' : 'Welcome Back'}
+              {mode === 'signup' ? 'Join Zach Deal' : mode === 'verify' ? 'Verify Your Email' : 'Welcome Back'}
             </h2>
             {planName && (
               <p className="mt-2 text-sm text-bbd-ivory/60">
@@ -410,7 +410,7 @@ export default function AuthPageClient() {
                 Transform Your Body
               </h3>
               <p className="text-lg text-bbd-ivory/90 mb-6">
-                Join thousands of athletes who&apos;ve achieved their fitness goals with Built By Deal&apos;s proven programs.
+                Join thousands of athletes who&apos;ve achieved their fitness goals with Zach Deal&apos;s proven programs.
               </p>
               <div className="flex items-center justify-center space-x-8 text-bbd-ivory/80">
                 <div className="text-center">

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPhilosophy() {
   const principles = [
@@ -130,9 +131,31 @@ export default function AboutPhilosophy() {
             <p className="text-sm sm:text-base lg:text-lg text-bbd-ivory italic mb-3 sm:mb-4 px-2 leading-relaxed">
   &ldquo;All of my formulations are backed by years of research, experience, and scientific evidence. If you heed my advice, and follow my instructions, you <strong className="text-bbd-orange">WILL</strong> reach your desired outcome.&rdquo;
             </p>
-            <p className="text-bbd-gold font-semibold text-sm sm:text-base">
+            <p className="text-bbd-gold font-semibold text-sm sm:text-base mb-6 sm:mb-8">
               - Zach Deal, Built By Deal
             </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/programs"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-bbd-gold text-bbd-black font-bold text-base sm:text-lg rounded-md hover:bg-bbd-orange transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+              >
+                DOWNLOAD PROGRAMS
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </Link>
+              <Link
+                href="/supplements"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-bbd-orange text-bbd-orange font-bold text-base sm:text-lg rounded-md hover:bg-bbd-orange hover:text-bbd-black transition-all duration-200 transform hover:scale-105 w-full sm:w-auto"
+              >
+                ENHANCE WITH SUPPS
+                <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-4.90.602L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

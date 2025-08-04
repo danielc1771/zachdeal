@@ -36,36 +36,28 @@ export default function AboutHero() {
         </div>
 
         {/* Main Heading */}
-        <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-bbd-ivory mb-4 sm:mb-6 leading-tight drop-shadow-2xl px-2">
+        <h1 className="font-display text-4xl xs:text-5xl sm:text-5xl md:text-6xl lg:text-7xl text-bbd-ivory mb-4 sm:mb-6 leading-tight drop-shadow-2xl px-2">
           <span className="block">MEET ZACH DEAL</span>
           <span className="block text-bbd-orange mt-2">YOUR TRANSFORMATION GUIDE</span>
         </h1>
 
-        {/* Subheading */}
-        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-2">
-          Certified personal trainer and nutritionist with <span className="text-bbd-gold font-semibold">15+ years of experience</span> helping over <span className="text-bbd-gold font-semibold">5,000 people</span> transform their bodies and elevate their lives.
+        {/* Subheading - Optimized for mobile */}
+        <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-4 sm:mb-8 max-w-4xl mx-auto leading-relaxed drop-shadow-lg px-2">
+          <span className="block sm:hidden">
+            {/* Mobile: Ultra-concise */}
+            <span className="text-bbd-gold font-semibold">15+ years</span> helping <span className="text-bbd-gold font-semibold">5,000+ people</span> transform
+          </span>
+          <span className="hidden sm:block">
+            {/* Desktop: Full description */}
+            Certified personal trainer and nutritionist with <span className="text-bbd-gold font-semibold">15+ years of experience</span> helping over <span className="text-bbd-gold font-semibold">5,000 people</span> transform their bodies and elevate their lives.
+          </span>
         </p>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-6 mb-8 sm:mb-12 max-w-2xl mx-auto px-2">
-          <div className="text-center">
-            <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-display text-bbd-orange mb-1 sm:mb-2 drop-shadow-lg">15+</div>
-            <div className="text-xs sm:text-sm md:text-base text-bbd-ivory/80 leading-tight">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-display text-bbd-gold mb-1 sm:mb-2 drop-shadow-lg">5,000+</div>
-            <div className="text-xs sm:text-sm md:text-base text-bbd-ivory/80 leading-tight">Lives Transformed</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-display text-bbd-orange mb-1 sm:mb-2 drop-shadow-lg">128+</div>
-            <div className="text-xs sm:text-sm md:text-base text-bbd-ivory/80 leading-tight">Active Members</div>
-          </div>
-        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
           <Link
-            href="/plans"
+            href="/programs"
             className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-bbd-orange text-bbd-black font-bold text-sm sm:text-base lg:text-lg rounded-md hover:bg-bbd-gold transition-all duration-200 transform hover:scale-105 drop-shadow-lg w-full sm:w-auto"
           >
             START MY JOURNEY
@@ -78,33 +70,9 @@ export default function AboutHero() {
             className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-bbd-ivory text-bbd-ivory font-bold text-sm sm:text-base lg:text-lg rounded-md hover:bg-bbd-ivory hover:text-bbd-black transition-all duration-200 transform hover:scale-105 drop-shadow-lg w-full sm:w-auto"
           >
             LEARN MY STORY
-            <svg className="ml-2 w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </button>
         </div>
 
-        {/* Credentials */}
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 text-bbd-ivory/60 text-sm sm:text-base px-4">
-          <div className="flex items-center justify-center sm:justify-start">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-bbd-orange mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="whitespace-nowrap">Certified Personal Trainer</span>
-          </div>
-          <div className="flex items-center justify-center sm:justify-start">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-bbd-orange mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="whitespace-nowrap">Certified Nutritionist</span>
-          </div>
-          <div className="flex items-center justify-center sm:justify-start">
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-bbd-orange mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span className="whitespace-nowrap">Science-Backed Methods</span>
-          </div>
-        </div>
       </div>
 
       {/* Scroll Indicator */}
