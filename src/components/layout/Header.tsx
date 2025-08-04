@@ -36,7 +36,7 @@ export default function Header() {
 
   return (
     <>
-      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
+      <div className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300`}>
         {/* Trust Badge Marquee - Only on home page when scrolled */}
         {isHomePage && isScrolled && <TrustBadgeMarquee />}
         
@@ -132,7 +132,7 @@ export default function Header() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden absolute top-20 left-0 right-0 bg-bbd-black/95 backdrop-blur-md shadow-lg">
+            <div className="md:hidden absolute top-20 left-0 right-0 bg-bbd-black/95 backdrop-blur-md shadow-lg z-50">
               <div className="px-4 py-4 space-y-3">
                 {navLinks.map((link) => (
                   <Link

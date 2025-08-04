@@ -1,6 +1,6 @@
 export default function SupplementsHero() {
   return (
-    <section className="relative bg-bbd-black pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8">
+    <section className="relative bg-bbd-black pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8">
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">

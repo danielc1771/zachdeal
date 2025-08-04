@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function AboutHero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24">
+    <section className="relative min-h-screen h-screen sm:h-[100dvh] flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32" style={{ height: 'clamp(100vh, 100dvh, 100vh)' }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -76,11 +76,15 @@ export default function AboutHero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <button
+        onClick={() => document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' })}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-bbd-gold transition-colors"
+        aria-label="Scroll to story section"
+      >
         <svg className="w-6 h-6 text-bbd-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
-      </div>
+      </button>
     </section>
   );
 }

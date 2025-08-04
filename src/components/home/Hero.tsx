@@ -12,7 +12,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen h-[100dvh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen h-screen sm:h-[100dvh] flex items-center justify-center overflow-hidden" style={{ height: 'clamp(100vh, 100dvh, 100vh)' }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
