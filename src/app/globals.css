@@ -68,4 +68,14 @@
   .font-body {
     font-family: var(--font-inter);
   }
+
+  /* Marquee animations */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }

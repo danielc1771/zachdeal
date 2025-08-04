@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import CartDrawer from '@/components/cart/CartDrawer';
 import { useCart } from '@/contexts/CartContext';
 import AuthModal from '@/components/auth/AuthModal';
+import TrustBadgeMarquee from '../ui/TrustBadgeMarquee';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,13 +35,19 @@ export default function Header() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-bbd-black/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-        }`}
-      >
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+      {/* Trust Badge Marquee - Always at the top of the page */}
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
+        {/* Trust Badge Marquee - Visible when scrolled as part of sticky header */}
+        {isScrolled && <TrustBadgeMarquee />}
+        
+        <header
+          className={`transition-all duration-300 ${
+            isScrolled ? 'bg-bbd-black/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+          }`}
+        >
+         {!isScrolled && <TrustBadgeMarquee />}
+          <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
@@ -142,7 +149,8 @@ export default function Header() {
             </div>
           )}
         </nav>
-      </header>
+        </header>
+      </div>
 
       {/* Auth Modal */}
       <AuthModal 
