@@ -84,7 +84,7 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <button
         onClick={scrollToNextSection}
-        className="absolute bottom-12 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-bbd-orange transition-colors"
+        className="absolute bottom-20 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-bbd-orange transition-colors"
         aria-label="Scroll to next section"
       >
         <svg className="w-6 h-6 text-bbd-ivory" fill="none" stroke="currentColor" viewBox="0 0 24 24">
