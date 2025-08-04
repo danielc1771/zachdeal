@@ -92,9 +92,9 @@ export default function SupplementsSection() {
                   key={product.id}
                   className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
                 >
-                  <div className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300">
+                  <div className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300 h-full flex flex-col">
                     {/* Product Image */}
-                    <Link href={`/supplements/${product.handle}`} className="block relative h-64 overflow-hidden">
+                    <Link href={`/supplements/${product.handle}`} className="block relative h-64 overflow-hidden flex-shrink-0">
                       {productImage ? (
                         <Image
                           src={productImage.url}
@@ -116,12 +116,12 @@ export default function SupplementsSection() {
                     </Link>
 
                     {/* Product Info */}
-                    <div className="p-6">
-                      <h3 className="font-display text-2xl text-bbd-ivory mb-2">
+                    <div className="p-6 flex flex-col flex-grow">
+                      <h3 className="font-display text-2xl text-bbd-ivory mb-2 line-clamp-2 min-h-[3.5rem]">
                         {product.title}
                       </h3>
                       {/* Price and CTA */}
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between mt-auto">
                         <span className="text-2xl font-bold text-bbd-orange">
                           {formatPrice(price.amount, price.currencyCode)}
                         </span>
