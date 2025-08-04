@@ -28,16 +28,16 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Tagline - Simplified for mobile */}
-        <p className="text-bbd-orange font-semibold text-sm sm:text-lg md:text-xl mb-3 sm:mb-4 tracking-wider uppercase max-w-sm sm:max-w-none mx-auto">
+        {/* Tagline - Generic messaging */}
+        <p className="text-bbd-orange font-semibold text-xs sm:text-lg md:text-xl mb-3 sm:mb-4 tracking-wider uppercase max-w-sm sm:max-w-none mx-auto">
           <span className="hidden sm:inline">Personalized Fitness & Nutrition</span>
-          <span className="sm:hidden">Zach Deal Training</span>
+          <span className="sm:hidden">Elite Training & Supplements</span>
         </p>
 
-        {/* Main Heading - Optimized for mobile readability */}
-        <h1 className="font-display text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-bbd-ivory mb-4 sm:mb-6 leading-tight max-w-sm sm:max-w-none mx-auto">
+        {/* Main Heading - Full width to match CTA buttons */}
+        <h1 className="font-display text-7xl xs:text-8xl sm:text-6xl md:text-7xl lg:text-8xl text-bbd-ivory mb-4 sm:mb-6 leading-tight max-w-sm sm:max-w-none mx-auto px-4 sm:px-0">
           <span className="block sm:hidden">
-            {/* Mobile: Single line, more compact */}
+            {/* Mobile: Full width, larger text */}
             <span className="block text-bbd-orange mb-1">TRANSFORM</span>
             <span className="block">YOUR BODY</span>
           </span>
@@ -49,16 +49,16 @@ export default function Hero() {
           </span>
         </h1>
 
-        {/* Subheading - Significantly reduced for mobile */}
+        {/* Subheading - Generic messaging */}
         <p className="text-sm sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-sm sm:max-w-3xl mx-auto leading-relaxed">
           <span className="block sm:hidden">
-            {/* Mobile: Ultra-concise with correct branding */}
-            Zach Deal programs & Victory Supps
+            {/* Mobile: Generic, concise */}
+            Proven programs & premium supplements
           </span>
           <span className="hidden sm:block">
-            {/* Desktop: More detailed with correct branding */}
+            {/* Desktop: More detailed but generic */}
             Join thousands who have transformed their physique with<br />
-            Zach Deal&apos;s proven programs and Victory Supps supplements
+            our proven training programs and premium supplements
           </span>
         </p>
 
