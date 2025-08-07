@@ -4,6 +4,9 @@ import SupplementCard from '@/components/supplements/SupplementCard';
 import SupplementsBenefits from '@/components/supplements/SupplementsBenefits';
 import SupplementsCTA from '@/components/supplements/SupplementsCTA';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 export default async function SupplementsPage() {
   // Fetch supplements from Shopify
   const supplements: Product[] = await getCollectionProducts('supplements', 50);

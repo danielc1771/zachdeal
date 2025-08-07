@@ -3,6 +3,9 @@ import ProgramsHero from '@/components/programs/ProgramsHero';
 import ProgramCard from '@/components/programs/ProgramCard';
 import ProgramsCTA from '@/components/programs/ProgramsCTA';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 export default async function ProgramsPage() {
   // Fetch all programs from Shopify
   const allPrograms: Product[] = await getCollectionProducts('programs', 50);
