@@ -88,8 +88,9 @@ export default function SupplementsSection() {
               const isOutOfStock = !product.availableForSale;
 
               return (
-                <div
+                <Link
                   key={product.id}
+                  href={`/supplements/${product.handle}`}
                   className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
                 >
                   <div className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300 h-full flex flex-col">
@@ -147,7 +148,7 @@ export default function SupplementsSection() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

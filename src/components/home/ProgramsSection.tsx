@@ -26,8 +26,9 @@ export default async function ProgramsSection() {
             const price = product.priceRange.minVariantPrice;
 
             return (
-              <div
+              <Link
                 key={product.id}
+                href={`/programs/${product.handle}`}
                 className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300"
               >
                 {/* Product Image */}
@@ -83,7 +84,7 @@ export default async function ProgramsSection() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
