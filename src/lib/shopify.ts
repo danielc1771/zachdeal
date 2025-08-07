@@ -419,6 +419,9 @@ export async function getProducts(first: number = 20): Promise<Product[]> {
   try {
     const { data, errors } = await client.request(PRODUCTS_QUERY, {
       variables: { first },
+      headers: {
+        'Cache-Control': 'max-age=60',
+      },
     });
 
     if (errors) {
@@ -460,6 +463,7 @@ export async function getCollectionProducts(handle: string, first: number = 20):
   try {
     const { data, errors } = await client.request(COLLECTION_PRODUCTS_QUERY, {
       variables: { handle, first },
+
     });
 
     if (errors) {
