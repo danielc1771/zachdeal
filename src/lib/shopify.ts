@@ -460,6 +460,12 @@ export async function getProductByHandle(handle: string): Promise<Product | null
 }
 
 export async function getCollectionProducts(handle: string, first: number = 20): Promise<Product[]> {
+  const client = createStorefrontApiClient({
+    storeDomain: process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!,
+    apiVersion: '2025-01',
+    publicAccessToken: process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!,
+  });
+
   try {
     const { data, errors } = await client.request(COLLECTION_PRODUCTS_QUERY, {
       variables: { handle, first },
