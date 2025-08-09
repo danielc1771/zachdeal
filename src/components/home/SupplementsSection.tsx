@@ -95,13 +95,13 @@ export default function SupplementsSection() {
                 >
                   <div className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300 h-full flex flex-col">
                     {/* Product Image */}
-                    <Link href={`/supplements/${product.handle}`} className="block relative h-64 overflow-hidden flex-shrink-0">
+                    <Link href={`/supplements/${product.handle}`} className="block relative h-72 overflow-hidden flex-shrink-0">
                       {productImage ? (
                         <Image
                           src={productImage.url}
                           alt={productImage.altText || product.title}
                           fill
-                          className="object-cover hover:scale-105 transition-transform duration-300"
+                          className="object-cover hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
                         <div className="w-full h-full bg-gray-800 flex items-center justify-center">

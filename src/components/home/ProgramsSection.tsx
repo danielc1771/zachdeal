@@ -32,13 +32,13 @@ export default async function ProgramsSection() {
                 className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300"
               >
                 {/* Product Image */}
-                <Link href={`/programs/${product.handle}`} className="block relative h-64 overflow-hidden">
+                <Link href={`/programs/${product.handle}`} className="block relative h-72 overflow-hidden">
                   {productImage ? (
                     <Image
                       src={productImage.url}
                       alt={productImage.altText || product.title}
                       fill
-                      className="object-cover transition-transform duration-300 object-top"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-800 flex items-center justify-center">
