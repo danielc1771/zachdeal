@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { getCollectionProducts, formatPrice, type Product } from '@/lib/shopify';
+import { getCollectionProducts, type Product } from '@/lib/shopify';
+import ProductCard from '@/components/ui/ProductCard';
 
 export default function SupplementsSection() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -83,72 +83,21 @@ export default function SupplementsSection() {
             style={{ transform: `translateX(-${(currentIndex / 3) * 100}%)` }}
           >
             {products.map((product) => {
-              const productImage = product.featuredImage || product.images.edges[0]?.node;
-              const price = product.priceRange.minVariantPrice;
               const isOutOfStock = !product.availableForSale;
 
               return (
-                <Link
+                <div
                   key={product.id}
-                  href={`/supplements/${product.handle}`}
                   className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
                 >
-                  <div className="bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300 h-full flex flex-col">
-                    {/* Product Image */}
-                    <Link href={`/supplements/${product.handle}`} className="block relative h-72 overflow-hidden flex-shrink-0">
-                      {productImage ? (
-                        <Image
-                          src={productImage.url}
-                          alt={productImage.altText || product.title}
-                          fill
-                          className="object-cover hover:scale-110 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                          <span className="text-gray-600">No image</span>
-                        </div>
-                      )}
-                      {/* Out of Stock Badge */}
-                      {isOutOfStock && (
-                        <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                          SOLD OUT
-                        </div>
-                      )}
-                    </Link>
-
-                    {/* Product Info */}
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="font-display text-2xl text-bbd-ivory mb-2 line-clamp-2 min-h-[3.5rem]">
-                        {product.title}
-                      </h3>
-                      {/* Price and CTA */}
-                      <div className="flex items-center justify-between mt-auto">
-                        <span className="text-2xl font-bold text-bbd-orange">
-                          {formatPrice(price.amount, price.currencyCode)}
-                        </span>
-                        <Link
-                          href={`/supplements/${product.handle}`}
-                          className="inline-flex items-center text-bbd-ivory hover:text-bbd-orange transition-colors"
-                        >
-                          View Details
-                          <svg
-                            className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
+                  <ProductCard
+                    product={product}
+                    basePath="supplements"
+                    showBadge={isOutOfStock}
+                    badgeText={isOutOfStock ? "SOLD OUT" : ""}
+                    badgeColor="red"
+                  />
+                </div>
               );
             })}
           </div>

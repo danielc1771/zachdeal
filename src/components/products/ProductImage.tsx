@@ -40,7 +40,7 @@ export default function ProductImage({ image, title, placeholder = 'program' }: 
         src={image.url}
         alt={image.altText || title}
         fill
-        className={placeholder === 'program' ? 'object-contain' : 'object-cover'}
+        className="object-cover"
         priority
       />
     </div>

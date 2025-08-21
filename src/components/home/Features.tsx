@@ -1,6 +1,30 @@
+'use client';
+
 import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Scrollbar } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/scrollbar';
 
 export default function Features() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check for mobile screen size
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
   const features = [
     {
       icon: (
@@ -9,7 +33,7 @@ export default function Features() {
         </svg>
       ),
       title: 'SCIENCE-BACKED PROGRAMS',
-      description: 'Every program is built on proven training methodologies and nutritional science for guaranteed results.',
+      description: 'Every program is built on proven training methodologies and nutritional science. Get results backed by research and years of coaching experience.',
     },
     {
       icon: (
@@ -18,7 +42,7 @@ export default function Features() {
         </svg>
       ),
       title: 'PERSONALIZED APPROACH',
-      description: 'Customizable programs that adapt to your fitness level, goals, and lifestyle for optimal progression.',
+      description: 'Customizable programs that adapt to your fitness level, goals, and lifestyle. Each plan intelligently adjusts to your progress for optimal results.',
     },
     {
       icon: (
@@ -27,7 +51,7 @@ export default function Features() {
         </svg>
       ),
       title: 'COMMUNITY SUPPORT',
-      description: 'Join a thriving community of like-minded individuals on the same journey to greatness.',
+      description: 'Join a thriving community of like-minded individuals on the same transformation journey. Get motivation, tips, and celebrate wins together.',
     },
   ];
 
@@ -51,32 +75,99 @@ export default function Features() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="font-display text-4xl sm:text-5xl text-bbd-ivory mb-4">
-            WHY CHOOSE <span className="text-bbd-orange">BUILT BY DEAL</span>
+            WHY WORKOUT WITH <span className="text-bbd-orange">ZACH</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Join the elite who demand more from their training and nutrition
           </p>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-bbd-black/60 backdrop-blur-sm p-8 rounded-lg border border-gray-700 hover:border-bbd-orange/50 transition-all duration-300 text-center group"
+        {/* Features - Responsive */}
+        {isMobile ? (
+          /* Mobile: Carousel */
+          <div className="relative mb-16">
+            <Swiper
+              modules={[FreeMode, Scrollbar]}
+              spaceBetween={16}
+              slidesPerView={1.2}
+              freeMode={true}
+              scrollbar={{
+                hide: false,
+                draggable: true,
+              }}
+              breakpoints={{
+                480: {
+                  slidesPerView: 1.3,
+                  spaceBetween: 20,
+                },
+                640: {
+                  slidesPerView: 1.5,
+                  spaceBetween: 24,
+                },
+              }}
+              className="features-swiper"
             >
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-bbd-orange/10 text-bbd-orange rounded-full mb-6 group-hover:bg-bbd-orange group-hover:text-bbd-black transition-all duration-300">
-                {feature.icon}
-              </div>
-              <h3 className="font-display text-2xl text-bbd-ivory mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-gray-300">
-                {feature.description}
-              </p>
+              {features.map((feature, index) => (
+                <SwiperSlide key={index}>
+                  <div className="bg-bbd-black/60 backdrop-blur-sm p-8 rounded-lg border border-gray-700 hover:border-bbd-orange/50 transition-all duration-300 text-center group flex flex-col h-full min-h-[280px]">
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-bbd-orange/10 text-bbd-orange rounded-full mb-6 group-hover:bg-bbd-orange group-hover:text-bbd-black transition-all duration-300">
+                      {feature.icon}
+                    </div>
+                    <h3 className="font-display text-2xl text-bbd-ivory mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 flex-grow">
+                      {feature.description}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Mobile CTA Button - Below carousel, above stats */}
+            <div className="text-center mt-8 mb-8">
+              <Link
+                href="/programs"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-bbd-orange to-bbd-gold text-bbd-black font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-bbd-orange/25 transition-all duration-300 transform hover:scale-105"
+              >
+                START TODAY
+                <svg
+                  className="ml-2 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </Link>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          /* Desktop: Grid */
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-bbd-black/60 backdrop-blur-sm p-8 rounded-lg border border-gray-700 hover:border-bbd-orange/50 transition-all duration-300 text-center group"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-bbd-orange/10 text-bbd-orange rounded-full mb-6 group-hover:bg-bbd-orange group-hover:text-bbd-black transition-all duration-300">
+                  {feature.icon}
+                </div>
+                <h3 className="font-display text-2xl text-bbd-ivory mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-300">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 border-t border-gray-600/50">
@@ -97,7 +188,65 @@ export default function Features() {
             <p className="text-gray-300 uppercase tracking-wider text-sm">Average Rating</p>
           </div>
         </div>
+
+        {/* CTA Section - Desktop Only */}
+        {!isMobile && (
+          <div className="text-center mt-16">
+            <Link
+              href="/programs"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-bbd-orange to-bbd-gold text-bbd-black font-bold text-lg rounded-lg hover:shadow-2xl hover:shadow-bbd-orange/25 transition-all duration-300 transform hover:scale-105"
+            >
+              START TODAY
+              <svg
+                className="ml-2 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </div>
+        )}
       </div>
+
+      {/* Custom Swiper Styles */}
+      <style jsx global>{`
+        /* Features Swiper Scrollbar Styles */
+        .features-swiper .swiper-scrollbar {
+          background: rgba(238, 127, 14, 0.1);
+          height: 4px;
+          border-radius: 2px;
+          position: static !important;
+          margin-top: 20px;
+          width: 100% !important;
+          left: 0 !important;
+        }
+
+        .features-swiper .swiper-scrollbar-drag {
+          background: #EE7F0E;
+          border-radius: 2px;
+        }
+
+        .features-swiper .swiper-scrollbar-drag:active {
+          background: #FFC842;
+        }
+
+        /* Ensure proper spacing and positioning */
+        .features-swiper {
+          padding-bottom: 32px;
+          overflow: visible;
+        }
+
+        .features-swiper .swiper-slide {
+          margin-bottom: 12px;
+        }
+      `}</style>
     </section>
   );
 }

@@ -2,8 +2,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Scrollbar } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/scrollbar';
 
 export default function TransformationsSection() {
+  const [isMobile, setIsMobile] = useState(false);
+
   // Get all transformation images
   const transformationImages = [
     'IMG_7635.JPG', 'IMG_7636.JPG', 'IMG_7637.JPG', 'IMG_7638.JPG', 'IMG_7639.JPG',
@@ -12,9 +22,20 @@ export default function TransformationsSection() {
     'IMG_7650.JPG', 'IMG_7651.JPG', 'IMG_7654.JPG', 'IMG_7655.JPG'
   ];
 
-  // Split images into two rows
+  // Split images into two rows for desktop
   const row1Images = transformationImages.slice(0, Math.ceil(transformationImages.length / 2));
   const row2Images = transformationImages.slice(Math.ceil(transformationImages.length / 2));
+
+  // Check for mobile screen size
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   return (
     <section className="py-20 bg-bbd-black overflow-hidden">
@@ -48,75 +69,118 @@ export default function TransformationsSection() {
           </Link>
         </div>
 
-        {/* Dual Row Sliding Gallery */}
-        <div className="space-y-8">
-          {/* Row 1 - Left to Right */}
+        {/* Responsive Gallery */}
+        {isMobile ? (
+          /* Mobile: Single Row Swiper */
           <div className="relative">
-            <div className="flex animate-scroll-left space-x-6">
-              {/* Duplicate images for seamless loop */}
-              {[...row1Images, ...row1Images].map((image, index) => (
-                <div
-                  key={`row1-${index}`}
-                  className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
-                >
-                  <Image
-                    src={`/transformations/${image}`}
-                    alt={`Transformation ${index + 1}`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 256px, 256px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+            <Swiper
+              modules={[FreeMode, Scrollbar]}
+              spaceBetween={20}
+              slidesPerView={1.5}
+              freeMode={true}
+              scrollbar={{
+                hide: false,
+                draggable: true,
+              }}
+              breakpoints={{
+                480: {
+                  slidesPerView: 1.8,
+                  spaceBetween: 24,
+                },
+                640: {
+                  slidesPerView: 2.2,
+                  spaceBetween: 28,
+                },
+              }}
+              className="transformation-swiper"
+            >
+              {transformationImages.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group">
+                    <Image
+                      src={`/transformations/${image}`}
+                      alt={`Transformation ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 480px) 200px, (max-width: 640px) 240px, 280px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </SwiperSlide>
               ))}
+            </Swiper>
+          </div>
+        ) : (
+          /* Desktop: Dual Row Sliding Gallery */
+          <div className="space-y-8">
+            {/* Row 1 - Left to Right */}
+            <div className="relative">
+              <div className="flex animate-scroll-left space-x-6">
+                {/* Duplicate images for seamless loop */}
+                {[...row1Images, ...row1Images].map((image, index) => (
+                  <div
+                    key={`row1-${index}`}
+                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
+                  >
+                    <Image
+                      src={`/transformations/${image}`}
+                      alt={`Transformation ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="256px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 2 - Right to Left (offset) */}
+            <div className="relative ml-32">
+              <div className="flex animate-scroll-right space-x-6">
+                {/* Duplicate images for seamless loop */}
+                {[...row2Images, ...row2Images].map((image, index) => (
+                  <div
+                    key={`row2-${index}`}
+                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
+                  >
+                    <Image
+                      src={`/transformations/${image}`}
+                      alt={`Transformation ${index + 1}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="256px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        )}
 
-          {/* Row 2 - Right to Left (offset) */}
-          <div className="relative ml-32">
-            <div className="flex animate-scroll-right space-x-6">
-              {/* Duplicate images for seamless loop */}
-              {[...row2Images, ...row2Images].map((image, index) => (
-                <div
-                  key={`row2-${index}`}
-                  className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
-                >
-                  <Image
-                    src={`/transformations/${image}`}
-                    alt={`Transformation ${index + 1}`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 256px, 256px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Stats */}
+        {/* Bottom Stats - Matching Features component styling */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-bbd-orange mb-2">500+</div>
-            <div className="text-bbd-ivory/80 text-sm">Transformations</div>
+            <div className="font-display text-5xl text-bbd-orange mb-2">500+</div>
+            <p className="text-gray-300 uppercase tracking-wider text-sm">Transformations</p>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-bbd-orange mb-2">95%</div>
-            <div className="text-bbd-ivory/80 text-sm">Success Rate</div>
+            <div className="font-display text-5xl text-bbd-orange mb-2">12</div>
+            <p className="text-gray-300 uppercase tracking-wider text-sm">Week Programs</p>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-bbd-orange mb-2">12</div>
-            <div className="text-bbd-ivory/80 text-sm">Week Average</div>
+            <div className="font-display text-5xl text-bbd-orange mb-2">24/7</div>
+            <p className="text-gray-300 uppercase tracking-wider text-sm">Support</p>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-bold text-bbd-orange mb-2">24/7</div>
-            <div className="text-bbd-ivory/80 text-sm">Support</div>
+            <div className="font-display text-5xl text-bbd-orange mb-2">100%</div>
+            <p className="text-gray-300 uppercase tracking-wider text-sm">Results Guaranteed</p>
           </div>
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);
@@ -148,6 +212,36 @@ export default function TransformationsSection() {
           .animate-scroll-right {
             animation-duration: 25s;
           }
+        }
+
+        /* Custom Swiper Scrollbar Styles */
+        .transformation-swiper .swiper-scrollbar {
+          background: rgba(238, 127, 14, 0.1);
+          height: 4px;
+          border-radius: 2px;
+          position: static !important;
+          margin-top: 20px;
+          width: 100% !important;
+          left: 0 !important;
+        }
+
+        .transformation-swiper .swiper-scrollbar-drag {
+          background: #EE7F0E;
+          border-radius: 2px;
+        }
+
+        .transformation-swiper .swiper-scrollbar-drag:active {
+          background: #FFC842;
+        }
+
+        /* Ensure proper spacing and positioning */
+        .transformation-swiper {
+          padding-bottom: 32px;
+          overflow: visible;
+        }
+
+        .transformation-swiper .swiper-slide {
+          margin-bottom: 12px;
         }
       `}</style>
     </section>
