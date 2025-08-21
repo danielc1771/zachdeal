@@ -1,10 +1,40 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { getCollectionProducts, type Product } from '@/lib/shopify';
 import ProductCard from '@/components/ui/ProductCard';
 
-export default async function ProgramsSection() {
-  // Fetch products from the 'programs' collection
-  const products: Product[] = await getCollectionProducts('programs', 6);
+export default function ProgramsSection() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const fetchedProducts = await getCollectionProducts('programs', 6);
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching programs:', error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-bbd-black">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-bbd-orange border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-bbd-ivory">Loading programs...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-bbd-black">
