@@ -79,13 +79,14 @@ export default function TransformationsPage() {
             {transformationImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative aspect-[3/4] rounded-xl overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/70 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-bbd-orange/20"
+                className="group relative rounded-xl overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/70 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-bbd-orange/20"
               >
                 <Image
                   src={`/transformations/${image}`}
                   alt={`Transformation ${index + 1}`}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  width={400}
+                  height={600}
+                  className="object-contain w-full h-auto group-hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                 />
                 

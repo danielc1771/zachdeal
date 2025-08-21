@@ -96,12 +96,13 @@ export default function TransformationsSection() {
             >
               {transformationImages.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group">
+                  <div className="relative w-full h-80 sm:h-96 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group flex items-center justify-center bg-bbd-charcoal/10">
                     <Image
                       src={`/transformations/${image}`}
                       alt={`Transformation ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      width={400}
+                      height={600}
+                      className="object-contain max-w-full max-h-full group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 480px) 200px, (max-width: 640px) 240px, 280px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -120,13 +121,14 @@ export default function TransformationsSection() {
                 {[...row1Images, ...row1Images].map((image, index) => (
                   <div
                     key={`row1-${index}`}
-                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
+                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group flex items-center justify-center bg-bbd-charcoal/10"
                   >
                     <Image
                       src={`/transformations/${image}`}
                       alt={`Transformation ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      width={256}
+                      height={384}
+                      className="object-contain max-w-full max-h-full group-hover:scale-105 transition-transform duration-500"
                       sizes="256px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -142,13 +144,14 @@ export default function TransformationsSection() {
                 {[...row2Images, ...row2Images].map((image, index) => (
                   <div
                     key={`row2-${index}`}
-                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group"
+                    className="flex-shrink-0 relative w-64 h-80 rounded-lg overflow-hidden border-2 border-bbd-charcoal/30 hover:border-bbd-orange/50 transition-all duration-300 group flex items-center justify-center bg-bbd-charcoal/10"
                   >
                     <Image
                       src={`/transformations/${image}`}
                       alt={`Transformation ${index + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      width={256}
+                      height={384}
+                      className="object-contain max-w-full max-h-full group-hover:scale-105 transition-transform duration-500"
                       sizes="256px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bbd-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
