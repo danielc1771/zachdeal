@@ -10,7 +10,7 @@ interface ProductImageProps {
 export default function ProductImage({ image, title, placeholder = 'program' }: ProductImageProps) {
   if (!image) {
     return (
-      <div className="aspect-square relative rounded-2xl overflow-hidden bg-bbd-charcoal/20">
+      <div className="relative rounded-2xl overflow-hidden bg-bbd-charcoal/20" style={{ aspectRatio: '1081/743' }}>
         <div className="w-full h-full flex items-center justify-center">
           <div className="text-center">
             {placeholder === 'program' ? (
@@ -35,13 +35,14 @@ export default function ProductImage({ image, title, placeholder = 'program' }: 
   }
 
   return (
-    <div className="aspect-square relative rounded-2xl overflow-hidden bg-bbd-charcoal/20">
+    <div className="relative rounded-2xl overflow-hidden bg-bbd-charcoal/20" style={{ aspectRatio: '1081/743' }}>
       <Image
         src={image.url}
         alt={image.altText || title}
         fill
-        className="object-cover"
+        className="object-contain"
         priority
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>
   );

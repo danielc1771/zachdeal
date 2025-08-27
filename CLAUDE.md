@@ -15,10 +15,10 @@ Key integrations:
 ## Development Commands
 
 ```bash
-npm run dev      # Start development server with Turbopack
+npm run dev      # Start development server with Turbopack on port 3000
 npm run build    # Build production bundle
 npm run start    # Start production server
-npm run lint     # Run ESLint
+npm run lint     # Run ESLint (no test commands configured - project uses manual testing)
 ```
 
 ## Architecture
@@ -67,10 +67,11 @@ Feature-based components in `/src/components/`:
 - `ui/` - Reusable components using class-variance-authority
 
 ### Styling
-Tailwind CSS with custom brand colors:
-- `bbd-black` (#000000), `bbd-charcoal` (#1A1B18)
-- `bbd-ivory` (#EFEAE0), `bbd-orange` (#EE7F0E), `bbd-gold` (#FFC842)
+Tailwind CSS with custom brand colors and responsive design:
+- Brand colors: `bbd-black` (#000000), `bbd-charcoal` (#1A1B18), `bbd-ivory` (#EFEAE0), `bbd-orange` (#EE7F0E), `bbd-gold` (#FFC842)
 - Custom fonts: Bebas Neue (display), Inter (body)
+- Additional breakpoint: `xs` at 475px
+- Uses class-variance-authority for component variants
 
 ## Key Integration Points
 
@@ -126,3 +127,10 @@ NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=
 - Target: ES2017 with ESNext module resolution
 - Path alias: `@/*` maps to `./src/*`
 - Database types generated in `/types/supabase.ts`
+
+## PWA Configuration
+
+- Next.js 15.3.3 with App Router
+- PWA capabilities via next-pwa package
+- Image optimization configured for Shopify CDN domains
+- Vercel Analytics integration for performance monitoring

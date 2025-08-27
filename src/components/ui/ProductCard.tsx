@@ -25,14 +25,15 @@ export default function ProductCard({
 
   return (
     <div className={`bg-bbd-charcoal/50 rounded-lg overflow-hidden border border-gray-800 hover:border-bbd-orange transition-all duration-300 h-full flex flex-col ${className}`}>
-      {/* Product Image */}
-      <Link href={`/${basePath}/${product.handle}`} className="block relative h-72 overflow-hidden flex-shrink-0">
+      {/* Product Image - Maintaining 1081x743 aspect ratio (1.45:1) */}
+      <Link href={`/${basePath}/${product.handle}`} className="block relative overflow-hidden flex-shrink-0" style={{ aspectRatio: '1081/743' }}>
         {productImage ? (
           <Image
             src={productImage.url}
             alt={productImage.altText || product.title}
             fill
-            className="object-cover hover:scale-110 transition-transform duration-500"
+            className="object-contain hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="w-full h-full bg-gray-800 flex items-center justify-center">

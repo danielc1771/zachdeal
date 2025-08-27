@@ -5,6 +5,7 @@ import { CartProvider } from "@/contexts/CartContext";
 import { SessionContextProvider } from "@/contexts/SessionContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
             </CartProvider>
           </SessionContextProvider>
         </AuthProvider>
+        <Analytics />
       </body>
     </html>
   );

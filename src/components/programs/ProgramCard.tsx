@@ -45,15 +45,16 @@ export default function ProgramCard({ product, featured = false, priority = fals
         </div>
       )}
 
-      {/* Product Image */}
-      <Link href={`/programs/${product.handle}`} className="block relative h-72 overflow-hidden">
+      {/* Product Image - Maintaining 1081x743 aspect ratio (1.45:1) */}
+      <Link href={`/programs/${product.handle}`} className="block relative overflow-hidden" style={{ aspectRatio: '1081/743' }}>
         {productImage ? (
           <Image
             src={productImage.url}
             alt={productImage.altText || product.title}
             fill
-            className="object-cover group-hover:scale-110 transition-transform duration-500"
+            className="object-contain group-hover:scale-105 transition-transform duration-500"
             priority={priority}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-bbd-charcoal to-bbd-black flex items-center justify-center">
